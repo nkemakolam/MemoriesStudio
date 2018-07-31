@@ -1,0 +1,43 @@
+@model IEnumerable<Memories.Models.MemoryImage>
+
+@{
+    ViewBag.Title = "Gallary";
+}
+
+<h2>Gallary</h2>
+
+@foreach (var item in Model) { 
+<div>
+
+
+  @*<a class="gallery-item" href="single.html">
+    <img src="@Url.Content(item.ImagePath)" alt="Free HTML5 Bootstrap Template by FreeHTML5.co">
+    <span class="overlay">
+      <h2>Nature</h2>
+      <span>14 Photos</span>
+    </span>
+  </a>*@
+    
+    <hr />
+   
+    <dl class="dl-horizontal">
+        
+        <dd>
+           <img src="@Url.Content(item.ImagePath)" width="450" hieght="480" />
+        </dd>
+        <dt>
+            @Html.DisplayName(item.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayName(item.ImageId.ToString())
+        </dd>
+    </dl>
+</div>
+<p>
+  @Html.ActionLink("Edit", "Edit", new { id = item.ImageId }) |
+  
+</p>
+
+}
+@Html.ActionLink("Back to List", "Index")
