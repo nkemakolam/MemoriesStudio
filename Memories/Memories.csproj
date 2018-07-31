@@ -106,9 +106,13 @@
     <Content Include="Content\css\style.css" />
     <Content Include="Content\fonts\bootstrap\glyphicons-halflings-regular.svg" />
     <Content Include="Content\fonts\icomoon\icomoon.svg" />
+    <Content Include="Content\images\beaty.png" />
+    <Content Include="Content\images\creative.png" />
+    <Content Include="Content\images\genius.png" />
     <Content Include="Content\images\Logo-color.png" />
     <Content Include="Content\images\logo-colored.png" />
     <Content Include="Content\images\Mpro3 Logo.png" />
+    <Content Include="Content\images\slim.png" />
     <Content Include="Content\js\bootstrap.min.js" />
     <Content Include="Content\js\google_map.js" />
     <Content Include="Content\js\jquery.countTo.js" />
