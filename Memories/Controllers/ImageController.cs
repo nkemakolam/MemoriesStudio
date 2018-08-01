@@ -1,9 +1,10 @@
 using Memories.Models;
 using System;
+using System.Data.Entity.Validation;
 using System.IO;
 using System.Linq;
 using System.Web.Mvc;
-using SystemMonitor.Models;
+
 
 namespace Memories.Controllers
 {
@@ -29,7 +30,8 @@ namespace Memories.Controllers
         return View();
       }
       [HttpPost]
-      public ActionResult AddImage(MemoryImage imageModel)
+    [ValidateAntiForgeryToken]
+    public ActionResult AddImage(MemoryImage imageModel)
       {
 
         string fileName = Path.GetFileNameWithoutExtension(imageModel.ImageFile.FileName);
@@ -40,7 +42,29 @@ namespace Memories.Controllers
         imageModel.ImageFile.SaveAs(fileName);
 
       _db.Images.Add(imageModel);
-      _db.SaveChanges();
+
+      try
+      {
+        // Your code...
+        // Could also be before try if you know the exception occurs in SaveChanges
+
+        _db.SaveChanges();
+      }
+      catch (DbEntityValidationException e)
+      {
+        foreach (var eve in e.EntityValidationErrors)
+        {
+          ViewBag.ErrorMessage = ("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
+              eve.Entry.Entity.GetType().Name, eve.Entry.State);
+          foreach (var ve in eve.ValidationErrors)
+          {
+            ViewBag.ErrorMessage = ("- Property: \"{0}\", Error: \"{1}\"",
+                ve.PropertyName, ve.ErrorMessage);
+          }
+        }
+        return ViewBag.ErrorMessage;
+      }
+     
 
 
 

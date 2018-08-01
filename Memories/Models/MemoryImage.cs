@@ -13,6 +13,7 @@ namespace Memories.Models
     [Key]
     public int ImageId { get; set; }
 
+    [Required]
     public string Title { get; set; }
     [DisplayName("Upload File")]
     public string ImagePath { get; set; }

@@ -7,7 +7,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 
-namespace SystemMonitor.Models
+namespace Memories.Models
 {
   public class EFDbContext : DbContext
   {
